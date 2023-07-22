@@ -4,10 +4,14 @@ accounts:
   coins:
   - 20000token
   - 200000000stake
+  mnemonic: harbor reform medal decorate situate village kiss reason usual clown prepare oil any army senior palace film fun donate time loud onion together tuna
+
 - name: bob
   coins:
   - 10000token
   - 100000000stake
+  mnemonic: jaguar essay wall hole verb great army panda aerobic age feed soul nominee hurdle inner board theme velvet grief above swing subject margin manage 
+
 faucet:
   name: bob
   coins:
