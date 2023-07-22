@@ -15,7 +15,7 @@ export default function useCosmosStakingV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosStakingV1Beta1.query.queryValidators(query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -39,7 +39,7 @@ export default function useCosmosStakingV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosStakingV1Beta1.query.queryValidatorDelegations(validator_addr, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -55,7 +55,7 @@ export default function useCosmosStakingV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosStakingV1Beta1.query.queryValidatorUnbondingDelegations(validator_addr, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -87,7 +87,7 @@ export default function useCosmosStakingV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosStakingV1Beta1.query.queryDelegatorDelegations(delegator_addr, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -103,7 +103,7 @@ export default function useCosmosStakingV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosStakingV1Beta1.query.queryDelegatorUnbondingDelegations(delegator_addr, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -119,7 +119,7 @@ export default function useCosmosStakingV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosStakingV1Beta1.query.queryRedelegations(delegator_addr, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -135,7 +135,7 @@ export default function useCosmosStakingV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosStakingV1Beta1.query.queryDelegatorValidators(delegator_addr, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );

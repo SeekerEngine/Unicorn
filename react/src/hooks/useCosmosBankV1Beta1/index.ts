@@ -23,7 +23,7 @@ export default function useCosmosBankV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosBankV1Beta1.query.queryAllBalances(address, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -39,7 +39,7 @@ export default function useCosmosBankV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosBankV1Beta1.query.querySpendableBalances(address, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -63,7 +63,7 @@ export default function useCosmosBankV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosBankV1Beta1.query.queryTotalSupply(query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -102,7 +102,7 @@ export default function useCosmosBankV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosBankV1Beta1.query.queryDenomsMetadata(query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -118,7 +118,7 @@ export default function useCosmosBankV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosBankV1Beta1.query.queryDenomOwners(denom, query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
@@ -134,7 +134,7 @@ export default function useCosmosBankV1Beta1() {
       query['pagination.count_total']= true;
       return  client.CosmosBankV1Beta1.query.querySendEnabled(query ?? undefined).then( res => ({...res.data,pageParam}) );
     }, {...options,
-      getNextPageParam: (lastPage, allPages) => { if ((lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
+      getNextPageParam: (lastPage, allPages) => { if (Number(lastPage.pagination?.total ?? 0) >((lastPage.pageParam ?? 0) * perPage)) {return lastPage.pageParam+1 } else {return undefined}},
       getPreviousPageParam: (firstPage, allPages) => { if (firstPage.pageParam==1) { return undefined } else { return firstPage.pageParam-1}}
     }
     );
