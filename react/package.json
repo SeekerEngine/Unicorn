@@ -2,6 +2,7 @@
   "dependencies": {
     "@cosmjs/encoding": "^0.31",
     "@cosmjs/stargate": "^0.31",
+    "@cosmjs/tendermint-rpc": "^0.31",
     "@headlessui/react": "^1.7.3",
     "@headlessui/tailwindcss": "^0.1.1",
     "@ignt/react-library": "^0.4.3",

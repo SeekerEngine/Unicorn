@@ -11,6 +11,9 @@ dependencies:
   '@cosmjs/stargate':
     specifier: ^0.31
     version: 0.31.0
+  '@cosmjs/tendermint-rpc':
+    specifier: ^0.31
+    version: 0.31.0
   '@headlessui/react':
     specifier: ^1.7.3
     version: 1.7.3(react-dom@18.2.0)(react@18.2.0)
@@ -4537,10 +4540,13 @@ packages:
       '@cosmjs/launchpad': 0.27.0
       '@cosmjs/proto-signing': 0.31.0
       '@cosmjs/stargate': 0.31.0
+      '@cosmjs/tendermint-rpc': 0.31.0
       '@keplr-wallet/types': 0.12.16
       axios: 1.4.0
       buffer: 6.0.3
       events: 3.3.0
     transitivePeerDependencies:
+      - bufferutil
       - debug
+      - utf-8-validate
     dev: false
