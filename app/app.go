@@ -114,6 +114,10 @@ import (
 	unicornmodulekeeper "Unicorn/x/unicorn/keeper"
 	unicornmoduletypes "Unicorn/x/unicorn/types"
 
+	"github.com/CosmWasm/wasmd/x/wasm"
+	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
+	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	appparams "Unicorn/app/params"
@@ -176,6 +180,7 @@ var (
 		consensus.AppModuleBasic{},
 		unicornmodule.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
+		wasm.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -252,6 +257,7 @@ type App struct {
 
 	UnicornKeeper unicornmodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
+	WasmKeeper wasmkeeper.Keeper
 
 	// mm is the module manager
 	mm *module.Manager
@@ -297,7 +303,7 @@ func New(
 		govtypes.StoreKey, paramstypes.StoreKey, ibcexported.StoreKey, upgradetypes.StoreKey,
 		feegrant.StoreKey, evidencetypes.StoreKey, ibctransfertypes.StoreKey, icahosttypes.StoreKey,
 		capabilitytypes.StoreKey, group.StoreKey, icacontrollertypes.StoreKey, consensusparamtypes.StoreKey,
-		unicornmoduletypes.StoreKey,
+		unicornmoduletypes.StoreKey, wasmtypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
