@@ -113,6 +113,7 @@ import (
 	unicornmodule "Unicorn/x/unicorn"
 	unicornmodulekeeper "Unicorn/x/unicorn/keeper"
 	unicornmoduletypes "Unicorn/x/unicorn/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	appparams "Unicorn/app/params"
@@ -120,7 +121,7 @@ import (
 )
 
 const (
-	AccountAddressPrefix = "cosmos"
+	AccountAddressPrefix = "unicorn"
 	Name                 = "Unicorn"
 )
 
