@@ -1,0 +1,7 @@
+syntax = "proto3";
+package unicorn.unicorn;
+
+option go_package = "Unicorn/x/unicorn/types";
+
+// Msg defines the Msg service.
+service Msg {}

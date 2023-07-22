@@ -1,0 +1,12 @@
+syntax = "proto3";
+package unicorn.unicorn;
+
+import "gogoproto/gogo.proto";
+import "unicorn/unicorn/params.proto";
+
+option go_package = "Unicorn/x/unicorn/types";
+
+// GenesisState defines the unicorn module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
