@@ -5,6 +5,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/CosmWasm/wasmd/x/wasm"
 	tmdb "github.com/cometbft/cometbft-db"
 	tmrand "github.com/cometbft/cometbft/libs/rand"
 	"github.com/cosmos/cosmos-sdk/baseapp"
@@ -50,8 +51,9 @@ func New(t *testing.T, configs ...Config) *Network {
 // genesis and single validator. All other parameters are inherited from cosmos-sdk/testutil/network.DefaultConfig
 func DefaultConfig() network.Config {
 	var (
-		encoding = app.MakeEncodingConfig()
-		chainID  = "chain-" + tmrand.NewRand().Str(6)
+		encoding        = app.MakeEncodingConfig()
+		chainID         = "chain-" + tmrand.NewRand().Str(6)
+		emptyWasmOption []wasm.Option
 	)
 	return network.Config{
 		Codec:             encoding.Marshaler,
@@ -70,6 +72,7 @@ func DefaultConfig() network.Config {
 				0,
 				encoding,
 				simtestutil.EmptyAppOptions{},
+				emptyWasmOption,
 				baseapp.SetPruning(pruningtypes.NewPruningOptionsFromString(val.GetAppConfig().Pruning)),
 				baseapp.SetMinGasPrices(val.GetAppConfig().MinGasPrices),
 				baseapp.SetChainID(chainID),

@@ -33,13 +33,17 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
+	"github.com/prometheus/client_golang/prometheus"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+
 	// this line is used by starport scaffolding # root/moduleImport
 
 	"Unicorn/app"
 	appparams "Unicorn/app/params"
+
+	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 )
 
 // NewRootCmd creates a new root command for a Cosmos SDK application
@@ -274,6 +278,11 @@ func (a appCreator) newApp(
 		cast.ToUint32(appOpts.Get(server.FlagStateSyncSnapshotKeepRecent)),
 	)
 
+	var wasmOpts []wasmkeeper.Option
+	if cast.ToBool(appOpts.Get("telemetry.enabled")) {
+		wasmOpts = append(wasmOpts, wasmkeeper.WithVMCacheMetrics(prometheus.DefaultRegisterer))
+	}
+
 	return app.New(
 		logger,
 		db,
@@ -284,6 +293,7 @@ func (a appCreator) newApp(
 		cast.ToUint(appOpts.Get(server.FlagInvCheckPeriod)),
 		a.encodingConfig,
 		appOpts,
+		wasmOpts,
 		baseapp.SetPruning(pruningOpts),
 		baseapp.SetMinGasPrices(cast.ToString(appOpts.Get(server.FlagMinGasPrices))),
 		baseapp.SetHaltHeight(cast.ToUint64(appOpts.Get(server.FlagHaltHeight))),
@@ -315,6 +325,8 @@ func (a appCreator) appExport(
 		return servertypes.ExportedApp{}, errors.New("application home not set")
 	}
 
+	var emptyWasmOpts []wasmkeeper.Option
+
 	app := app.New(
 		logger,
 		db,
@@ -325,6 +337,7 @@ func (a appCreator) appExport(
 		uint(1),
 		a.encodingConfig,
 		appOpts,
+		emptyWasmOpts,
 	)
 
 	if height != -1 {
