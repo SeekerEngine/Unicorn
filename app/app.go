@@ -97,6 +97,7 @@ import (
 	icahostkeeper "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host/keeper"
 	icahosttypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host/types"
 	icatypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/types"
+	ibcfee "github.com/cosmos/ibc-go/v7/modules/apps/29-fee"
 	ibcfeekeeper "github.com/cosmos/ibc-go/v7/modules/apps/29-fee/keeper"
 	ibcfeetypes "github.com/cosmos/ibc-go/v7/modules/apps/29-fee/types"
 	"github.com/cosmos/ibc-go/v7/modules/apps/transfer"
@@ -208,6 +209,7 @@ var (
 		unicornmodule.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
 		wasm.AppModuleBasic{},
+		ibcfee.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -671,7 +673,10 @@ func New(
 		transferModule,
 		icaModule,
 		unicornModule,
+		ibcfee.NewAppModule(app.IBCFeeKeeper),
+		wasm.NewAppModule(appCodec, &app.WasmKeeper, app.StakingKeeper, app.AccountKeeper, app.BankKeeper, app.MsgServiceRouter(), app.GetSubspace(wasmtypes.ModuleName)),
 		// this line is used by starport scaffolding # stargate/app/appModule
+		ibcfee.NewAppModule(app.IBCFeeKeeper),
 
 		crisis.NewAppModule(app.CrisisKeeper, skipGenesisInvariants, app.GetSubspace(crisistypes.ModuleName)), // always be last to make sure that it checks for all invariants and not only part of them
 	)
@@ -704,6 +709,8 @@ func New(
 		vestingtypes.ModuleName,
 		consensusparamtypes.ModuleName,
 		unicornmoduletypes.ModuleName,
+		ibcfeetypes.ModuleName,
+		wasmtypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	)
 
@@ -730,6 +737,8 @@ func New(
 		vestingtypes.ModuleName,
 		consensusparamtypes.ModuleName,
 		unicornmoduletypes.ModuleName,
+		ibcfeetypes.ModuleName,
+		wasmtypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	)
 
@@ -761,6 +770,8 @@ func New(
 		vestingtypes.ModuleName,
 		consensusparamtypes.ModuleName,
 		unicornmoduletypes.ModuleName,
+		ibcfeetypes.ModuleName,
+		wasmtypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 	app.mm.SetOrderInitGenesis(genesisModuleOrder...)
