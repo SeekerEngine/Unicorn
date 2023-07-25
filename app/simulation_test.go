@@ -99,6 +99,7 @@ func BenchmarkSimulation(b *testing.B) {
 		0,
 		app.MakeEncodingConfig(),
 		appOptions,
+		app.GetEnabledProposals(),
 		emptyWasmOption,
 		baseapp.SetChainID(config.ChainID),
 	)
@@ -177,6 +178,7 @@ func TestAppStateDeterminism(t *testing.T) {
 				simcli.FlagPeriodValue,
 				app.MakeEncodingConfig(),
 				appOptions,
+				app.GetEnabledProposals(),
 				emptyWasmOption,
 				fauxMerkleModeOpt,
 				baseapp.SetChainID(chainID),
@@ -257,6 +259,7 @@ func TestAppImportExport(t *testing.T) {
 		0,
 		app.MakeEncodingConfig(),
 		appOptions,
+		app.GetEnabledProposals(),
 		emptyWasmOption,
 		baseapp.SetChainID(config.ChainID),
 	)
@@ -319,6 +322,7 @@ func TestAppImportExport(t *testing.T) {
 		0,
 		app.MakeEncodingConfig(),
 		appOptions,
+		app.GetEnabledProposals(),
 		emptyWasmOption,
 		baseapp.SetChainID(config.ChainID),
 	)
@@ -414,6 +418,7 @@ func TestAppSimulationAfterImport(t *testing.T) {
 		0,
 		app.MakeEncodingConfig(),
 		appOptions,
+		app.GetEnabledProposals(),
 		emptyWasmOption,
 		fauxMerkleModeOpt,
 		baseapp.SetChainID(config.ChainID),
@@ -482,6 +487,7 @@ func TestAppSimulationAfterImport(t *testing.T) {
 		0,
 		app.MakeEncodingConfig(),
 		appOptions,
+		app.GetEnabledProposals(),
 		emptyWasmOption,
 		fauxMerkleModeOpt,
 		baseapp.SetChainID(config.ChainID),
