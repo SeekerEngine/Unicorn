@@ -129,8 +129,8 @@ import (
 )
 
 const (
-	AccountAddressPrefix = "unicorn"
-	Name                 = "Unicorn"
+	AccountAddressPrefix = "wasm"
+	Name                 = "unicorn"
 	// If EnabledSpecificProposals is "", and this is "true", then enable all x/wasm proposals.
 	// If EnabledSpecificProposals is "", and this is not "true", then disable all x/wasm proposals.
 	ProposalsEnabled = "false"
@@ -223,7 +223,7 @@ var (
 		govtypes.ModuleName:            {authtypes.Burner},
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
 		// this line is used by starport scaffolding # stargate/app/maccPerms
-		wasm.ModuleName: {authtypes.Burner},
+		wasmtypes.ModuleName: {authtypes.Burner},
 	}
 )
 
@@ -312,7 +312,7 @@ func New(
 	encodingConfig appparams.EncodingConfig,
 	appOpts servertypes.AppOptions,
 	enabledProposals []wasmtypes.ProposalType,
-	wasmOpts []wasm.Option,
+	wasmOpts []wasmkeeper.Option,
 	baseAppOptions ...func(*baseapp.BaseApp),
 ) *App {
 	appCodec := encodingConfig.Marshaler
